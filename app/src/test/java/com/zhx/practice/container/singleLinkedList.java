@@ -31,17 +31,23 @@ public class singleLinkedList {
         LinkedList linkedList = new LinkedList();
         linkedList.addNode(10);
         linkedList.addNode(11);
-        linkedList.addNode(23);
+        linkedList.addNode(11);
         linkedList.addNode(435);
-        System.out.println(linkedList.length);
-        System.out.println(linkedList.size());
+        System.out.println("linkedList.size(): " + linkedList.size());
         linkedList.insert(2, 22);
         linkedList.insert(2, 22);
         linkedList.insert(5, 55);
         linkedList.insert(18, 18);
         linkedList.insert(-1, -1);
-        System.out.println(linkedList.length);
-        System.out.println(linkedList.size());
+        System.out.println("linkedList.size(): " + linkedList.size());
+        linkedList.delete(5);
+        linkedList.delete(18);
+        linkedList.delete(-1);
+        System.out.println("linkedList.size(): " + linkedList.size());
+        linkedList.sort();
+        System.out.println("linkedList.size(): " + linkedList.size());
+        linkedList.deleteDuplicate();
+        System.out.println("linkedList.size(): " + linkedList.size());
     }
 
 
@@ -52,17 +58,17 @@ public class singleLinkedList {
 
         private Node head;
 
-        public int length;
+        private int length;
 
         /**
          * 添加元素
          */
-        public void addNode(int data) {
+        private void addNode(int data) {
             Node newNode = new Node(data);
             addNode(newNode);
         }
 
-        public void addNode(Node node) {
+        private void addNode(Node node) {
             if (head == null) {
                 head = node;
                 length++;
@@ -82,10 +88,10 @@ public class singleLinkedList {
         /**
          * 遍历链表,获取链表长度；
          */
-        public int size() {
+        private int size() {
             int size = 0;
-            // 遍历链表
-            Node temp = head.next;
+            // 遍历链表,这里的头节点是有数据的，巨大多数情况下头节点不显示数据；
+            Node temp = head;
             while (temp != null) {
                 size++;
                 System.out.println("data ：" + temp.data);
@@ -95,9 +101,9 @@ public class singleLinkedList {
         }
 
         /**
-         * 插入数据；
+         * 插入节点；
          */
-        public void insert(int index, int data) {
+        private void insert(int index, int data) {
             if (index < 0 || index > length) {
                 System.out.println("insert position is illegal");
                 return;
@@ -108,7 +114,7 @@ public class singleLinkedList {
             Node temp = head;
 
             while (temp.next != null) {
-                if (curPosition != (index - 1)) {
+                if (curPosition == (index - 1)) {
                     insertNode.next = temp.next;
                     temp.next = insertNode;
                     length++;
@@ -118,17 +124,105 @@ public class singleLinkedList {
                 curPosition++;
             }
         }
+
+        /**
+         * 删除节点；
+         */
+        private void delete(int index) {
+            if (index < 0 || index > length) {
+                System.out.println("delete position is illegal");
+                return;
+            }
+            int curPosition = 0;
+            Node temp = head;
+            while (temp.next != null) {
+                if (curPosition == index - 1) {
+                    temp.next = temp.next.next;
+                    length--;
+                    return;
+                }
+                temp = temp.next;
+                curPosition++;
+            }
+        }
+
+        /**
+         * 对链表进行冒泡排序
+         */
+        private void sort() {
+            System.out.println("begin sort");
+            Node currentNode;
+            Node nextNode;
+
+//            // 没有长度的实现方法
+//            for (currentNode = head; currentNode.next != null; currentNode = currentNode.next) {
+//                for (nextNode = head; nextNode.next != null; nextNode = nextNode.next) {
+//                    if (nextNode.data > nextNode.next.data) {
+//                        int temp = nextNode.data;
+//                        nextNode.data = nextNode.next.data;
+//                        nextNode.next.data = temp;
+//                    }
+//                }
+//            }
+
+            // 有长度的优化算法
+            boolean isChange;
+            currentNode = head;
+            nextNode = head;
+            for (int i = 0; i <= length; i++) {
+                isChange = false;
+                for (int j = 0; j < length - i; j++) {
+                    if (nextNode.next != null) {
+                        if (nextNode.data > nextNode.next.data) {
+                            int temp = nextNode.data;
+                            nextNode.data = nextNode.next.data;
+                            nextNode.next.data = temp;
+                            isChange = true;
+                        }
+                        nextNode = nextNode.next;
+                    }
+                }
+                nextNode = head;
+                currentNode = currentNode.next;
+                //如果比较完一趟没有发生置换，那么说明已经排好序了，不需要再执行下去了
+                if (!isChange) {
+                    break;
+                }
+            }
+
+        }
+
+        /**
+         * 删除链表内的重复数据
+         */
+        public void deleteDuplicate() {
+            System.out.println("begin deleteDuplicate");
+            Node temp = head;
+            Node nextNode = head.next;
+
+            while (temp.next != null) {
+                while (nextNode.next != null) {
+                    if (nextNode.next.data == nextNode.data) {
+                        nextNode.next = nextNode.next.next;
+                    } else {
+                        nextNode = nextNode.next;
+                    }
+                }
+                temp = temp.next;
+            }
+        }
+
     }
 
     private class Node {
 
         // 数据域
-        public int data;
+        private int data;
 
         // 指针域
-        public Node next;
+        private Node next;
 
-        public Node(int data) {
+        private Node(int data) {
             this.data = data;
         }
 
