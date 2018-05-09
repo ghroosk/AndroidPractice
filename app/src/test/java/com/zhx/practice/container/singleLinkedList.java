@@ -48,6 +48,8 @@ public class singleLinkedList {
         System.out.println("linkedList.size(): " + linkedList.size());
         linkedList.deleteDuplicate();
         System.out.println("linkedList.size(): " + linkedList.size());
+        Node node = linkedList.getMidNode();
+        System.out.println("linkedList.mid data: " + node.data);
     }
 
 
@@ -59,6 +61,10 @@ public class singleLinkedList {
         private Node head;
 
         private int length;
+
+        private Node getHead() {
+            return head;
+        }
 
         /**
          * 添加元素
@@ -195,22 +201,60 @@ public class singleLinkedList {
         /**
          * 删除链表内的重复数据
          */
-        public void deleteDuplicate() {
+        private void deleteDuplicate() {
             System.out.println("begin deleteDuplicate");
             Node temp = head;
-            Node nextNode = head.next;
+            Node nextNode = temp.next;
 
             while (temp.next != null) {
                 while (nextNode.next != null) {
                     if (nextNode.next.data == nextNode.data) {
+                        //将下一个节点删除(当前节点指向下下个节点)
                         nextNode.next = nextNode.next.next;
                     } else {
+                        //继续下一个
                         nextNode = nextNode.next;
                     }
                 }
+                //下一轮比较
                 temp = temp.next;
             }
         }
+
+        /**
+         * 查询链表中的中间元素
+         */
+        private Node getMidNode() {
+            System.out.println("begin getMidNode");
+            Node p1 = head;
+            Node p2 = head;
+
+            // 一个走一步，一个走两步，直到为null，走一步的到达的就是中间节点
+            while(p2 != null && p2.next != null && p2.next.next != null) {
+                p1 = p1.next;
+                p2 = p2.next.next;
+            }
+            return p1;
+        }
+
+//        /**
+//         * 实现链表的反转
+//         *
+//         * @param node 链表的头节点
+//         */
+//        private Node reverseLinkList(Node node) {
+//            Node prev ;
+//            if (node == null || node.next == null) {
+//                prev = node;
+//            } else {
+//                Node tmp = reverseLinkList(node.next);
+//                node.next.next = node;
+//                node.next = null;
+//                prev = tmp;
+//            }
+//            return prev;
+//        }
+
 
     }
 
