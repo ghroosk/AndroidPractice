@@ -10,7 +10,7 @@ import org.junit.Test;
 public class SRP {
 
     @Test
-    public void SrpTest() {
+    public void srpTest() {
         Animal animal = new Animal();
         animal.move("牛");
         animal.move("羊");
