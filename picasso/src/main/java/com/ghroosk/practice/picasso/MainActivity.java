@@ -2,6 +2,7 @@ package com.ghroosk.practice.picasso;
 
 import android.content.ContentResolver;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
@@ -11,6 +12,8 @@ import android.widget.ImageView;
 
 import com.ghroosk.practice.picasso.transform.CropCircleTransformation;
 import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String path = getResourcesUri(R.drawable.pic_network_error);
-        Log.e(TAG, "onCreate path: " + path );
+        Log.e(TAG, "onCreate path: " + path);
         Uri uri = Uri.parse(path);
 //        android.resource://com.ghroosk.practice.picasso/drawable/pic_network_error
         mImageView = findViewById(R.id.image);
@@ -34,8 +37,28 @@ public class MainActivity extends AppCompatActivity {
                 .error(R.drawable.pic_network_error)
                 .rotate(180)
                 .priority(Picasso.Priority.HIGH)
+//                .memoryPolicy()
+
                 .transform(new CropCircleTransformation())
                 .into(mImageView);
+
+        Picasso picasso = Picasso.get();
+        picasso.pauseTag(1);
+        picasso.setLoggingEnabled(true);
+
+        try {
+            Bitmap bitmap = Picasso.get()
+                    .load(uri)
+                    .placeholder(R.drawable.pic_network_error)
+                    .fit()
+                    .error(R.drawable.pic_network_error)
+                    .rotate(180)
+                    .priority(Picasso.Priority.HIGH)
+                    .transform(new CropCircleTransformation())
+                    .get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -47,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 resources.getResourceEntryName(id);
         return uriPath;
     }
-
 
 
 }
