@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.zhx.practice.index;
+package com.ghroosk.priactice.view.letter.index;
 
 import android.text.TextUtils;
 import android.util.Log;

@@ -19,7 +19,7 @@
             android:dividerHeight="1px"
             android:layout_height="wrap_content"/>
 
-        <com.zhx.practice.index.IndexScroller
+        <com.ghroosk.priactice.view.letter.index.IndexScroller
             android:id="@+id/scroll"
             android:layout_width="35dp"
             android:layout_gravity="end"
