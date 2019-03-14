@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#c7161d</color>
+    <color name="colorPrimaryDark">#c7161d</color>
+    <!--<color name="colorAccent">#FF4081</color>-->
+
+    <color name="main_color">#c7161d</color>
+    <color name="main_button_focus_color">#e60710</color>
+    <color name="white">#ffffff</color>
+    <color name="theme_background">#f3f3f3</color>
+    <color name="text_content_3">#333333</color>
+    <color name="text_content_6">#666666</color>
+    <color name="text_content_b">#b0b0b0</color>
+    <color name="authentication_tip_color">#df8d90</color>
+    <color name="transparency"> #00000000</color>
+
+    <color name="text_content_9">#b0b0b0</color>
+    <color name="black">#000000</color>
+    <color name="white_line">#e5e5e5</color>
+    <color name="load_dialog_progress">#1b1a1a</color>
+    <color name="normal_green">#089401</color>
+
 </resources>

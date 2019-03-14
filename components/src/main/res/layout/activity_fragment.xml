@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/task_viewpager"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/line"/>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/button_group"
+        android:background="#000000"/>
+
+    <LinearLayout
+        android:id="@+id/button_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/white"
+        android:minHeight="50dp"
+        android:orientation="horizontal">
+
+        <!-- 待启运 -->
+        <LinearLayout
+            style="@style/top_layout_linear_layout">
+
+            <TextView
+                android:id="@+id/dispatch"
+                style="@style/top_layout_text_view"
+                android:text="父Fragment 1"
+                android:textColor="#c7161d"/>
+
+            <View
+                android:id="@+id/dispatch_tip"
+                style="@style/top_layout_tip_view"
+                android:background="#c7161d"/>
+
+        </LinearLayout>
+
+        <!-- 待启运 -->
+        <LinearLayout
+            style="@style/top_layout_linear_layout">
+
+            <TextView
+                android:id="@+id/wait_for_start"
+                style="@style/top_layout_text_view"
+                android:text="父Fragment 2"/>
+
+            <View
+                android:id="@+id/wait_for_start_tip"
+                style="@style/top_layout_tip_view"/>
+
+        </LinearLayout>
+
+        <!-- 运输中 -->
+        <LinearLayout
+            style="@style/top_layout_linear_layout">
+
+            <TextView
+                android:id="@+id/in_transit"
+                style="@style/top_layout_text_view"
+                android:text="父Fragment 3"/>
+
+            <View
+                android:id="@+id/in_transit_tip"
+                style="@style/top_layout_tip_view"/>
+
+        </LinearLayout>
+
+        <!-- 已申请任务 -->
+        <LinearLayout
+            style="@style/top_layout_linear_layout">
+
+            <TextView
+                android:id="@+id/receipt"
+                style="@style/top_layout_text_view"
+                android:text="父Fragment 4"/>
+
+            <View
+                android:id="@+id/receipt_tip"
+                style="@style/top_layout_tip_view"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
