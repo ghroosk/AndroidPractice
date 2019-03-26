@@ -116,7 +116,7 @@ public class FragmentAct extends AppCompatActivity {
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), mFragmentList);
         mViewPager.setAdapter(fragmentAdapter);
 
-//        mViewPager.setOffscreenPageLimit(mTvArrays.length);
+        mViewPager.setOffscreenPageLimit(mTvArrays.length);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override

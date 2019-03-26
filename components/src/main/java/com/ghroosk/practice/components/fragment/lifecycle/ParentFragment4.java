@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,7 @@ import com.ghroosk.practice.components.R;
 /**
  * Created by zhx on 2019/3/12.
  */
-public class ParentFragment4 extends Fragment {
+public class ParentFragment4 extends LazyFragment {
 
     private static final String TAG = ParentFragment4.class.getSimpleName();
     private View mView;
@@ -94,6 +93,30 @@ public class ParentFragment4 extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         Log.e(TAG, "onDestroyView: ");
+    }
+
+    /**
+     * 对用户第一次可见
+     */
+    @Override
+    public void onFragmentFirstVisible(){
+        Log.d(TAG, "onFragmentFirstVisible: ");
+    }
+
+    /**
+     *   对用户可见
+     */
+    @Override
+    public void onFragmentResume(){
+        Log.d(TAG, "onFragmentResume: ");
+    }
+
+    /**
+     *  对用户不可见
+     */
+    @Override
+    public void onFragmentPause(){
+        Log.d(TAG, "onFragmentPause: ");
     }
     
 }
