@@ -15,9 +15,9 @@ import com.ghroosk.practice.components.R;
 /**
  * Created by zhx on 2019/3/12.
  */
-public class ParentFragment2 extends LazyFragment {
+public class ChildrenFragment1 extends LazyFragment {
 
-    private static final String TAG = ParentFragment2.class.getSimpleName();
+    private static final String TAG = ChildrenFragment1.class.getSimpleName();
     private View mView;
     private TextView mTextView;
 
@@ -64,8 +64,8 @@ public class ParentFragment2 extends LazyFragment {
 
     @Override
     public void onStart() {
-        Log.e(TAG, "onStart: ");
         super.onStart();
+        Log.e(TAG, "onStart: ");
     }
 
     @Override
@@ -82,8 +82,8 @@ public class ParentFragment2 extends LazyFragment {
 
     @Override
     public void onStop() {
-        Log.e(TAG, "onStop: ");
         super.onStop();
+        Log.e(TAG, "onStop: ");
     }
 
     /**
@@ -118,5 +118,5 @@ public class ParentFragment2 extends LazyFragment {
     public void onFragmentPause(){
         Log.d(TAG, "onFragmentPause: ");
     }
-    
+
 }
