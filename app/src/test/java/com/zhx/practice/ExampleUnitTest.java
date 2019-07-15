@@ -14,4 +14,38 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
+
+    public void test1() throws Exception {
+        throw new Exception("test");
+    }
+
+    @Test
+    public void test2() throws Exception {
+        test1();
+    }
+
+    @Test
+    public void test3(){
+        try{
+            test2();
+        } catch(Exception e) {
+            System.out.print("catch throw exception");
+        }
+//        isCorrect2("23");
+    }
+
+    @Test
+    public void isCorrect2(){
+//        String msg = "we";
+//        if ("".equals(msg)) {
+//            throw new NullPointerException("msg is empty string");
+//        }
+        try {
+            test1();
+        } catch (Exception e) {
+            System.out.print("catch");
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -1,1 +1,1 @@
-include ':app', ':picasso', ':utils', ':components', ':view'
+include ':app', ':picasso', ':utils', ':components', ':view', ':kotlin'
